@@ -11,11 +11,19 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'detalles',
+    loadChildren: () => import('./detalles/detalles.module').then( m => m.DetallesPageModule)
+  },
+  {
+    path: 'segundo',
+    loadChildren: () => import('./segundo/segundo.module').then( m => m.SegundoPageModule)
+  },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules, initialNavigation: 'enabled' })
   ],
   exports: [RouterModule]
 })
